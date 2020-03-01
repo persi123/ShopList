@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const config = require("config");
 const jwt = require("jsonwebtoken");
+const auth = require("../../middelware/auth");
 
 //Item Model
 const User = require("../../models/User");
@@ -56,6 +57,16 @@ router.post("/", (req, res) => {
   //     console.log(err);
   //     return res.status(400).json({ msg: err });
   //   });
+});
+
+//@route post API/auth
+//@DESC authenticate user
+// @access Public
+
+router.get("/user", auth, (req, res) => {
+  User.findById(req.user.id)
+    .select("-password")
+    .then(user => res.json(user));
 });
 
 module.exports = router;

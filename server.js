@@ -24,7 +24,7 @@ mongoose
     useUnifiedTopology: true
   })
   .then(() => console.log("Mongo DB connected ..."))
-  .catch(err => console.log(err));
+  .catch(err => console.log("err"));
 
 //use routes
 app.use("/api/items", require("./routes/api/items"));
@@ -41,6 +41,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const port = process.env.Port || 5000;
+const port = process.env.Port || 4000;
 
 app.listen(port, () => console.log(`server started on port ${port}`));
