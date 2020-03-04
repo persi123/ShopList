@@ -2,12 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
-<<<<<<< HEAD
 const config = require("config");
-=======
-//const config = require("config");
->>>>>>> e2502ef2927e6335500ce8fa90d2493465365443
-const db = require("./Config/Keys");
 
 // const items = ;
 
@@ -18,12 +13,12 @@ const app = express();
 app.use(bodyParser.json());
 
 //DB Config
-//const db = config.get("mongoURI");
+const db = config.get("mongoURI");
 
 // connect to mongo
 
 mongoose
-  .connect(db.mongoURI, {
+  .connect(db, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
