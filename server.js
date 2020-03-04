@@ -2,7 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
+<<<<<<< HEAD
 const config = require("config");
+=======
+//const config = require("config");
+>>>>>>> e2502ef2927e6335500ce8fa90d2493465365443
 const db = require("./Config/Keys");
 
 // const items = ;
