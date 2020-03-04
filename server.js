@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
 const config = require("config");
+const db = require("./Config/Keys");
 
 // const items = ;
 
@@ -13,7 +14,7 @@ const app = express();
 app.use(bodyParser.json());
 
 //DB Config
-const db = config.get("mongoURI");
+//const db = config.get("mongoURI");
 
 // connect to mongo
 
