@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 // connect to mongo
 
 mongoose
-  .connect(db, {
+  .connect(db.mongoURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
