@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
-const config = require("config");
+// const config = require("config");
 
 // const items = ;
 
@@ -13,12 +13,12 @@ const app = express();
 app.use(bodyParser.json());
 
 //DB Config
-const db = config.get("mongoURI");
+// const db = config.get("mongoURI");
 
 // connect to mongo
-
+require("dotenv").config();
 mongoose
-  .connect(db, {
+  .connect(process.env.mongoURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
