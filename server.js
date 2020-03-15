@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
-// const config = require("config");
+const config = require("config");
 
 // const items = ;
 
@@ -13,12 +13,12 @@ const app = express();
 app.use(bodyParser.json());
 
 //DB Config
-// const db = config.get("mongoURI");
+const db = config.get("mongoURI");
 
 // connect to mongo
-require("dotenv").config();
+
 mongoose
-  .connect(process.env.mongoURI, {
+  .connect(db, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
@@ -30,6 +30,8 @@ mongoose
 app.use("/api/items", require("./routes/api/items"));
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
+
+///Serve static assets if in production
 
 // set static folder
 app.use(express.static("client/build"));
