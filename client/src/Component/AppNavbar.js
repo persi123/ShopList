@@ -46,9 +46,11 @@ class AppNavbar extends Component {
                   </NavItem>
                 )}
 
-                <NavItem>
-                  <Logout />
-                </NavItem>
+                {this.props.isAuthenticated ? (
+                  <NavItem>
+                    <Logout />{" "}
+                  </NavItem>
+                ) : null}
               </Nav>
             </Collapse>
           </Container>
