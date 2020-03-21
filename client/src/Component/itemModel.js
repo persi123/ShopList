@@ -8,7 +8,6 @@ import {
   Form,
   FormGroup,
   Label,
-  input,
   Input
 } from "reactstrap";
 

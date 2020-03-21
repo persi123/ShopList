@@ -1,18 +1,16 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import rootReducer from "./reducers/index";
 
-const initialState = {};
+import reducers from "./reducers";
 
-const middelware = [thunk];
+let store;
 
-const store = createStore(
-  rootReducer,
-  initialState,
-  compose(
-    applyMiddleware(...middelware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
+// Enable redux dev tool only in development mode
+if (process.env.NODE_ENV === "development") {
+  const composeEnhancers = window.REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
+  store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
+} else {
+  store = createStore(reducers, applyMiddleware(thunk));
+}
 
 export default store;
